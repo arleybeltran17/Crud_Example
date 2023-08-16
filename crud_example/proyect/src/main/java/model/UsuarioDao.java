@@ -162,5 +162,18 @@ public class UsuarioDao {
         }
     }
 
+//! Delete
+    public void eliminar(int userId) throws SQLException {
+        sql = "DELETE FROM users_tbl WHERE user_id = ?";
+        try (Connection con = Conexion.conectar();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar el usuario: " + e.getMessage());
+            throw e;
+        }
+}
+
 }
 

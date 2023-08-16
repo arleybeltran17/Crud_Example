@@ -72,6 +72,12 @@ public class Controler extends HttpServlet {
             System.out.println("Acabas de entrar al caso 'listar'");
             listar(req, resp);
             break;
+
+            case "eliminar":
+            System.out.println("Has Accedido Al Caso Delete");
+            delete(req, resp);
+
+            break;
         }
     }
 
@@ -130,7 +136,7 @@ public class Controler extends HttpServlet {
             System.out.println("Registro actualizado correctamente");
 
             //? Redireccionamiento preventivo.       
-            req.getRequestDispatcher("update.jsp").forward(req, resp);
+            req.getRequestDispatcher("consultar.jsp").forward(req, resp);
 
         } catch (Exception e) {
             System.out.println("Error en la actualizacion del registro "+e.getMessage().toString());
@@ -185,5 +191,32 @@ public class Controler extends HttpServlet {
     } catch (Exception e) {
         System.out.println("Hay problemas al listar los datos " + e.getMessage().toString());
     }
+    }
+
+
+    private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("Has ingresado a la función eliminar");
+    
+        String userIdStrDelete = req.getParameter("user_id");
+    
+        try {
+            int userIdToDelete = Integer.parseInt(userIdStrDelete);
+            System.out.println("ID del usuario a eliminar: " + userIdToDelete);
+    
+            new UsuarioDao().eliminar(userIdToDelete);
+            System.out.println("Usuario eliminado correctamente");
+    
+            // Redireccionamiento preventivo.
+            // Redirige nuevamente a la página de listado de usuarios después de eliminar
+            resp.sendRedirect("consultar.jsp");
+        } catch (NumberFormatException e) {
+            // Si ocurre un error al convertir el ID a entero
+            e.printStackTrace();
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID de usuario inválido");
+        } catch (SQLException e) {
+            // Si ocurre un error al eliminar el usuario en la base de datos
+            e.printStackTrace();
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al eliminar el usuario");
+        }
     }
 }

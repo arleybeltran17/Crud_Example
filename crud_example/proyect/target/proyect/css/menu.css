@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+}
+
+.container{
+    height: 100vh;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.card{
+    height: 350px;
+    width: 300px;
+    margin: 10px;
+    transition: 300ms;
+}
+
+.personaje,.personaje_2,.personaje_3{
+
+    height: 350px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
+    background-color: #00a5ec;
+    transition: 300ms;
+    position: absolute;
+}
+
+.imagen_personaje{
+    height: 350px;
+    width: 200px;
+    background-image: url(../img/vegeta.png);
+    background-size: cover;
+    margin-bottom: 200px;
+    transition: 300ms;
+    filter: drop-shadow(5px -4px 10px #000);
+}
+
+.imagen_personaje_2{
+    height: 350px;
+    width: 250px;
+    background-image: url(../img/GOKU.png);
+    background-size: cover;
+    margin-bottom: 200px;
+    transition: 300ms;
+    filter: drop-shadow(5px -4px 10px #000);
+}
+
+.imagen_personaje_3{
+    height: 350px;
+    width: 200px;
+    background-image: url(../img/gohan_v1.png);
+    background-size: cover;
+    margin-bottom: 200px;
+    transition: 300ms;
+    filter: drop-shadow(5px -4px 10px #000);
+}
+
+.detalle,.detalle_2,.detalle_3{
+    height: 200px;
+    width: 300px;
+    background-color: white;
+    position: absolute;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius:10% ;
+    margin-top: 150px;
+    z-index: 2;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    transition: 300ms;
+}
+
+/*! Hover */
+
+.card:hover{
+    transform: scale(1.1);
+}
+
+.card:hover .imagen_personaje{
+    transform: translateY(-40px);
+    background-image: url(../img/vegeta_V2.png);
+}
+
+.card:hover .imagen_personaje_2{
+    transform: translateY(-40px);
+    background-image: url(../img/GOKU_V2.png);
+}
+
+.card:hover .imagen_personaje_3{
+    transform: translateY(-40px);
+    background-image: url(../img/gohan.png);
+}
+
+.card:hover .personaje{
+    background-image: radial-gradient(white, rgb(61, 18, 110));
+} 
+
+.card:hover .personaje_2{
+    background-image: radial-gradient(white, rgb(70, 70, 70));
+} 
+
+.card:hover .personaje_3{
+    background-image: radial-gradient(white, rgb(120, 17, 17));
+} 
+
+/*! Texto Y Boton*/
+
+h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p{
+    margin: auto;
+    width: 90%;
+    font-size: 12px;
+}
+
+.btn {
+    width: 100px;
+    margin: auto;
+    cursor: pointer;
+    background: #60117a;
+    background-image: -webkit-linear-gradient(top, #60117a, #18148f);
+    background-image: -moz-linear-gradient(top, #60117a, #18148f);
+    background-image: -ms-linear-gradient(top, #60117a, #18148f);
+    background-image: -o-linear-gradient(top, #60117a, #18148f);
+    background-image: linear-gradient(to bottom, #60117a, #18148f);
+    -webkit-border-radius: 6;
+    -moz-border-radius: 6;
+    border-radius: 6px;
+    text-shadow: 1px 1px 3px #292929;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 21px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+  
+  .btn:hover {
+    background: #18148f;
+    background-image: -webkit-linear-gradient(top, #18148f, #60117a);
+    background-image: -moz-linear-gradient(top, #18148f, #60117a);
+    background-image: -ms-linear-gradient(top, #18148f, #60117a);
+    background-image: -o-linear-gradient(top, #18148f, #60117a);
+    background-image: linear-gradient(to bottom, #18148f, #60117a);
+    text-decoration: none;
+  }
